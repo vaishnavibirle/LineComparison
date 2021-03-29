@@ -1,41 +1,55 @@
 package com.company;
-import java.util.Scanner;
+
 public class LineCompare {
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        //Welcoming Message
-        System.out.println("Welcome to line comparison computation");
-        //calculating for length of line1
-        System.out.println("Enter the first co-ordinate of x of line 1");
-        int x1 = s.nextInt();
-        System.out.println("Enter the first co-ordinate of y of line 1");
-        int y1 = s.nextInt();
-        System.out.println("Enter the second co-ordinate of x of line 1");
-        int x2 = s.nextInt();
-        System.out.println("Enter the second co-ordinate of y of line 1");
-        int y2 = s.nextInt();
-        Double length_line1 = Math.sqrt((Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2)));
-        System.out.println("The length of line 1 is" + length_line1);
 
-        //calculating for length of line2
-        System.out.println("Enter the first co-ordinate of x of line 2");
-        int X1 = s.nextInt();
-        System.out.println("Enter the first co-ordinate of y of line 2");
-        int Y1 = s.nextInt();
-        System.out.println("Enter the second co-ordinate of x of line 2");
-        int X2 = s.nextInt();
-        System.out.println("Enter the second co-ordinate of y of line 2");
-        int Y2 = s.nextInt();
-        Double length_line2 = Math.sqrt((Math.pow((X2 - X1), 2) + Math.pow((Y2 - Y1), 2)));
-        System.out.println("The length of line 2 is " + length_line2);
+    public static class line_length_generator {
+        // Declaring the points
+        int x_one;
+        int y_one;
 
-        //comparing two lengths of line
-        int lengthCheck = length_line1.compareTo(length_line2);
-        if (lengthCheck==0)
-            System.out.println("Two lines are equal in length");
-        else if (lengthCheck>0)
-            System.out.println("Length_line1 is greater than line_length2");
-        else
-            System.out.println("length_line1 is lesser than line_length2");
+        int x_two;
+        int y_two;
+
+
+
+        line_length_generator(int x1, int y1, int x2, int y2){
+            // Initializing the points
+            this.x_one = x1;
+            this.y_one = y1;
+            this.x_two = x2;
+            this.y_two = y2;
+
+
+        }
+
+        double line_length(){
+            // Finding the length of the line
+            return Math.sqrt(((x_two - x_one) ^ 2) + (y_two - y_one) ^ 2);
+        }
+
     }
+
+
+    public static void main(String[] args) {
+        // creating two Instance of class
+        line_length_generator line_one = new line_length_generator( 5 , 2 , 9, 9 );
+        line_length_generator line_two = new line_length_generator(5, 2, 9, 9);
+        // Comparing the lengths
+        int classifier = Double.compare(line_one.line_length(), line_two.line_length());
+        switch(classifier){
+            // Line one is longest
+            case 1:
+                System.out.println("LINE ONE IS THE LONGEST "+line_one.line_length());
+                break;
+            // Line two is the longest
+            case -1 :
+                System.out.println("LINE TWO IS THE LONGEST "+line_two.line_length());
+                break;
+            // both lines are equal
+            default :
+                System.out.println("BOTH LINES ARE EQUAL IN LENGTH");
+                break;
+        }
+    }
+
 }
