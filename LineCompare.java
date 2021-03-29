@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class LineCompare {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
+        //Welcoming Message
+        System.out.println("Welcome to line comparison computation");
         //calculating for length of line1
         System.out.println("Enter the first co-ordinate of x of line 1");
         int x1 = s.nextInt();
